@@ -4,10 +4,10 @@ import (
 	"context"
 
 	apihandler "github.com/jcchavezs/http-wasm-tracing/internal/host/api/handler"
-	"github.com/jcchavezs/http-wasm-tracing/tracing"
+	"github.com/jcchavezs/http-wasm-tracing/trace"
 )
 
-var Extractor = func(ctx context.Context) (tracing.Span, bool) {
+var Extractor = func(ctx context.Context) (trace.Span, bool) {
 	return nil, false
 }
 
