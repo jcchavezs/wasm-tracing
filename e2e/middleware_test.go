@@ -32,13 +32,17 @@ func inject(ctx context.Context, s *Span) context.Context {
 	return context.WithValue(ctx, spanKey{}, s)
 }
 
-func extract(ctx context.Context) (trace.Span, bool) {
-	s, ok := ctx.Value(spanKey{}).(*Span)
-	return s, ok
+func MakeExtract(t *testing.T) trace.Extractor {
+	t.Helper()
+	return func(ctx context.Context) (trace.Span, bool) {
+		s, ok := ctx.Value(spanKey{}).(*Span)
+		require.True(t, ok)
+		return s, ok
+	}
 }
 
 func TestE2E(t *testing.T) {
-	tracing.SetExtractor(extract)
+	tracing.SetExtractor(MakeExtract(t))
 	mw, err := wasm.NewMiddleware(
 		context.Background(),
 		[]byte(helloGuest),

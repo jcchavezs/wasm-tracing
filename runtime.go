@@ -19,7 +19,7 @@ var WrapNewRuntime = func(nr handler.NewRuntime) handler.NewRuntime {
 	}
 }
 
-var extractorSet = false
+var extractorSet bool
 
 func SetExtractor(e trace.Extractor) {
 	if !extractorSet {

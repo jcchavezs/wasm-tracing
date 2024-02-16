@@ -3,7 +3,7 @@ package handler
 import "context"
 
 type Host interface {
-	// SetRequestHeaderValue supports the WebAssembly function export
-	// FuncSetHeaderValue with HeaderKindRequest.
+	// SetSpanAttribute supports the WebAssembly function export
+	// FuncSetSpanAttribute.
 	SetSpanAttribute(ctx context.Context, key, value string)
 }
