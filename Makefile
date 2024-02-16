@@ -6,5 +6,6 @@ generate:
 		go mod tidy
 
 .PHONY: e2e
-e2e: generate
+e2e:
+	@echo "IMPORTANT: make sure you have run \`make generate\` before running the e2e\n"
 	go test -v ./e2e/...
