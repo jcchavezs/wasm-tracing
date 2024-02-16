@@ -12,7 +12,7 @@
   (type (;10;) (func (result i64)))
   (import "http_handler" "write_body" (func $github.com/http-wasm/http-wasm-guest-tinygo/handler/internal/imports.writeBody (type 7)))
   (import "wasi_snapshot_preview1" "fd_write" (func $runtime.fd_write (type 0)))
-  (import "http_handler" "set_span_attribute" (func $set_span_attribute (type 8)))
+  (import "http_handler" "set_span_string_attribute" (func $set_span_string_attribute (type 8)))
   (func $runtime.memequal (type 0) (param i32 i32 i32 i32) (result i32)
     (local i32 i32)
     i32.const 0
@@ -2399,7 +2399,7 @@
     i32.load
     local.get 1
     i32.load offset=4
-    call $set_span_attribute
+    call $set_span_string_attribute
     local.get 3
     i32.const 65888
     i32.eq

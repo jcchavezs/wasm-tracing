@@ -9,6 +9,7 @@ import (
 	"github.com/tetratelabs/wazero"
 )
 
+// WrapRuntime wraps a runtime with tracing middleware.
 var WrapNewRuntime = func(nr handler.NewRuntime) handler.NewRuntime {
 	return func(ctx context.Context) (wazero.Runtime, error) {
 		r, err := nr(ctx)
@@ -21,6 +22,7 @@ var WrapNewRuntime = func(nr handler.NewRuntime) handler.NewRuntime {
 
 var extractorSet bool
 
+// SetExtractor sets the extractor to use for extracting spans from the context.
 func SetExtractor(e trace.Extractor) {
 	if !extractorSet {
 		tracinghandler.Extractor = e

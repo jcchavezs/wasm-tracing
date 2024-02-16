@@ -15,7 +15,7 @@ type host struct{}
 
 var _ apihandler.Host = host{}
 
-func (host) SetSpanAttribute(ctx context.Context, key, value string) {
+func (host) SetSpanStringAttribute(ctx context.Context, key, value string) {
 	if s, ok := Extractor(ctx); ok {
 		s.SetAttribute(key, value)
 	}

@@ -2,8 +2,10 @@ package handler
 
 import "context"
 
+// Host is the interface that the WebAssembly module expects to be
+// implemented by the host.
 type Host interface {
-	// SetSpanAttribute supports the WebAssembly function export
-	// FuncSetSpanAttribute.
-	SetSpanAttribute(ctx context.Context, key, value string)
+	// SetSpanStringAttribute supports the WebAssembly function export
+	// FuncSetSpanStringAttribute.
+	SetSpanStringAttribute(ctx context.Context, key, value string)
 }

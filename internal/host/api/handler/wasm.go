@@ -1,4 +1,4 @@
 package handler
 
-// FuncSetSpanAttribute sets span attribute
-const FuncSetSpanAttribute = "set_span_attribute"
+// FuncSetSpanStringAttribute sets span string attribute
+const FuncSetSpanStringAttribute = "set_span_string_attribute"

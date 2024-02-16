@@ -15,7 +15,7 @@ func main() {
 
 // handleRequest implements a simple HTTP router.
 func handleRequest(req api.Request, resp api.Response) (next bool, reqCtx uint32) {
-	tracinghandler.SetSpanAttribute("greeting_id", "1")
+	tracinghandler.SetSpanStringAttribute("greeting_id", "1")
 	resp.Body().WriteString("hello")
 	return // skip the next handler, as we wrote a response.
 }

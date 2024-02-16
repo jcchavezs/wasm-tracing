@@ -12,7 +12,7 @@ type middleware struct {
 	host apihandler.Host
 }
 
-func (m *middleware) setSpanAttribute(ctx context.Context, mod wazeroapi.Module, params []uint64) {
+func (m *middleware) setSpanStringAttribute(ctx context.Context, mod wazeroapi.Module, params []uint64) {
 	key := uint32(params[0])
 	keyLen := uint32(params[1])
 	value := uint32(params[2])
@@ -21,7 +21,7 @@ func (m *middleware) setSpanAttribute(ctx context.Context, mod wazeroapi.Module,
 	if keyLen == 0 {
 		panic("span attribute key cannot be empty")
 	}
-	m.host.SetSpanAttribute(ctx, mustReadString(mod.Memory(), "key", key, keyLen), mustReadString(mod.Memory(), "value", value, valueLen))
+	m.host.SetSpanStringAttribute(ctx, mustReadString(mod.Memory(), "key", key, keyLen), mustReadString(mod.Memory(), "value", value, valueLen))
 }
 
 // mustReadString is a convenience function that casts mustRead

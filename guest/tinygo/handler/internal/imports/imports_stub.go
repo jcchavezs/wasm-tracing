@@ -2,5 +2,5 @@
 
 package imports
 
-// setSpanAttribute is stubbed for compilation outside TinyGo.
-func setSpanAttribute(keyPtr uintptr, keyLen uint32, valuePtr uintptr, valueLen uint32) {}
+// setSpanStringAttribute is stubbed for compilation outside TinyGo.
+func setSpanStringAttribute(keyPtr uintptr, keyLen uint32, valuePtr uintptr, valueLen uint32) {}
