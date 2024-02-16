@@ -13,10 +13,10 @@ type middleware struct {
 }
 
 func (m *middleware) setSpanAttribute(ctx context.Context, mod wazeroapi.Module, params []uint64) {
-	key := uint32(params[1])
-	keyLen := uint32(params[2])
-	value := uint32(params[3])
-	valueLen := uint32(params[4])
+	key := uint32(params[0])
+	keyLen := uint32(params[1])
+	value := uint32(params[2])
+	valueLen := uint32(params[3])
 
 	if keyLen == 0 {
 		panic("span attribute key cannot be empty")
