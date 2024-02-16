@@ -51,7 +51,7 @@ func TestE2E(t *testing.T) {
 	require.NoError(t, err)
 
 	h := mw.NewHandler(context.Background(), http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello, world!"))
+		w.Write([]byte("No hello"))
 	}))
 
 	s := &Span{}
@@ -59,8 +59,12 @@ func TestE2E(t *testing.T) {
 	req, _ := http.NewRequest("GET", "/", nil)
 	req = req.WithContext(inject(req.Context(), s))
 
-	h.ServeHTTP(httptest.NewRecorder(), req)
+	res := httptest.NewRecorder()
 
-	require.Equal(t, "hello", s.attrKey)
-	require.Equal(t, "world", s.attrValue)
+	h.ServeHTTP(res, req)
+
+	require.Equal(t, "hello", res.Body.String()) // notice the change in the response body
+
+	require.Equal(t, "greeting_id", s.attrKey)
+	require.Equal(t, "1", s.attrValue)
 }

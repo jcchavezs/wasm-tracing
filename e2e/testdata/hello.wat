@@ -6,15 +6,13 @@
   (type (;4;) (func (param i32) (result i32)))
   (type (;5;) (func (param i32 i32) (result i32)))
   (type (;6;) (func (param i32 i32 i32 i32 i32 i32)))
-  (type (;7;) (func (param i32 i32 i32 i32)))
-  (type (;8;) (func (param i32 i32 i32 i32 i32)))
-  (type (;9;) (func (param i32 i32 i32)))
-  (type (;10;) (func (result i32)))
-  (type (;11;) (func (result i64)))
-  (import "http_handler" "set_header_value" (func $github.com/http-wasm/http-wasm-guest-tinygo/handler/internal/imports.setHeaderValue (type 8)))
-  (import "http_handler" "write_body" (func $github.com/http-wasm/http-wasm-guest-tinygo/handler/internal/imports.writeBody (type 9)))
+  (type (;7;) (func (param i32 i32 i32)))
+  (type (;8;) (func (param i32 i32 i32 i32)))
+  (type (;9;) (func (result i32)))
+  (type (;10;) (func (result i64)))
+  (import "http_handler" "write_body" (func $github.com/http-wasm/http-wasm-guest-tinygo/handler/internal/imports.writeBody (type 7)))
   (import "wasi_snapshot_preview1" "fd_write" (func $runtime.fd_write (type 0)))
-  (import "http_handler" "set_span_attribute" (func $set_span_attribute (type 7)))
+  (import "http_handler" "set_span_attribute" (func $set_span_attribute (type 8)))
   (func $runtime.memequal (type 0) (param i32 i32 i32 i32) (result i32)
     (local i32 i32)
     i32.const 0
@@ -174,20 +172,20 @@
     end)
   (func $runtime.putchar (type 2) (param i32)
     (local i32 i32)
-    i32.const 65964
+    i32.const 65956
     i32.load
     local.tee 1
     i32.const 119
     i32.le_u
     if  ;; label = @1
-      i32.const 65964
+      i32.const 65956
       local.get 1
       i32.const 1
       i32.add
       local.tee 2
       i32.store
       local.get 1
-      i32.const 65968
+      i32.const 65960
       i32.add
       local.get 0
       i32.store8
@@ -202,16 +200,16 @@
       i32.and
       i32.eqz
       if  ;; label = @2
-        i32.const 65916
+        i32.const 65904
         local.get 2
         i32.store
         i32.const 1
-        i32.const 65912
+        i32.const 65900
         i32.const 1
-        i32.const 66136
+        i32.const 66128
         call $runtime.fd_write
         drop
-        i32.const 65964
+        i32.const 65956
         i32.const 0
         i32.store
       end
@@ -224,18 +222,18 @@
     local.get 0
     i32.eqz
     if  ;; label = @1
-      i32.const 66128
+      i32.const 66120
       return
     end
-    i32.const 66104
-    i32.const 66104
+    i32.const 66096
+    i32.const 66096
     i64.load
     local.get 0
     i64.extend_i32_u
     i64.add
     i64.store
-    i32.const 66112
-    i32.const 66112
+    i32.const 66104
+    i32.const 66104
     i64.load
     i64.const 1
     i64.add
@@ -246,7 +244,7 @@
     i32.const 4
     i32.shr_u
     local.set 5
-    i32.const 66092
+    i32.const 66084
     i32.load
     local.tee 4
     local.set 3
@@ -272,17 +270,17 @@
                   i32.and
                   br_table 2 (;@5;) 0 (;@7;) 1 (;@6;)
                 end
-                i32.const 66132
+                i32.const 66124
                 i32.load
                 drop
                 global.get $__stack_pointer
                 i32.const 65536
                 call $runtime.markRoots
                 i32.const 65536
-                i32.const 66432
+                i32.const 66416
                 call $runtime.markRoots
                 loop  ;; label = @7
-                  i32.const 66129
+                  i32.const 66121
                   i32.load8_u
                   i32.eqz
                   if  ;; label = @8
@@ -295,7 +293,7 @@
                     loop  ;; label = @9
                       block  ;; label = @10
                         block  ;; label = @11
-                          i32.const 66096
+                          i32.const 66088
                           i32.load
                           local.get 1
                           i32.gt_u
@@ -314,8 +312,8 @@
                                   end
                                   local.get 1
                                   call $_runtime.gcBlock_.markFree
-                                  i32.const 66120
-                                  i32.const 66120
+                                  i32.const 66112
+                                  i32.const 66112
                                   i64.load
                                   i64.const 1
                                   i64.add
@@ -335,7 +333,7 @@
                               end
                               i32.const 0
                               local.set 4
-                              i32.const 66088
+                              i32.const 66080
                               i32.load
                               local.get 1
                               i32.const 2
@@ -366,9 +364,9 @@
                           i32.const 2
                           local.set 1
                           local.get 2
-                          i32.const 66088
+                          i32.const 66080
                           i32.load
-                          i32.const 66432
+                          i32.const 66416
                           i32.sub
                           i32.const 3
                           i32.div_u
@@ -395,10 +393,10 @@
                   end
                   i32.const 0
                   local.set 1
-                  i32.const 66129
+                  i32.const 66121
                   i32.const 0
                   i32.store8
-                  i32.const 66096
+                  i32.const 66088
                   i32.load
                   local.set 2
                   loop  ;; label = @8
@@ -415,7 +413,7 @@
                     if  ;; label = @9
                       local.get 1
                       call $runtime.startMark
-                      i32.const 66096
+                      i32.const 66088
                       i32.load
                       local.set 2
                     end
@@ -437,7 +435,7 @@
               i32.eqz
               br_if 1 (;@4;)
             end
-            i32.const 66096
+            i32.const 66088
             i32.load
             local.get 3
             i32.eq
@@ -472,7 +470,7 @@
               local.set 3
               br 3 (;@2;)
             end
-            i32.const 66092
+            i32.const 66084
             local.get 2
             i32.store
             local.get 2
@@ -488,7 +486,7 @@
             i32.add
             local.set 1
             loop  ;; label = @5
-              i32.const 66092
+              i32.const 66084
               i32.load
               local.get 1
               i32.ne
@@ -506,7 +504,7 @@
             local.get 2
             i32.const 4
             i32.shl
-            i32.const 66432
+            i32.const 66416
             i32.add
             local.tee 2
             i32.const 0
@@ -523,7 +521,7 @@
         i32.const 0
         local.set 7
       end
-      i32.const 66092
+      i32.const 66084
       i32.load
       local.set 4
       local.get 1
@@ -543,16 +541,16 @@
           local.get 0
           i32.load
           local.tee 2
-          i32.const 66432
+          i32.const 66416
           i32.lt_u
           br_if 0 (;@3;)
           local.get 2
-          i32.const 66088
+          i32.const 66080
           i32.load
           i32.ge_u
           br_if 0 (;@3;)
           local.get 2
-          i32.const 66432
+          i32.const 66416
           i32.sub
           i32.const 4
           i32.shr_u
@@ -582,7 +580,7 @@
       end
     end)
   (func $_runtime.gcBlock_.state (type 4) (param i32) (result i32)
-    i32.const 66088
+    i32.const 66080
     i32.load
     local.get 0
     i32.const 2
@@ -599,7 +597,7 @@
     i32.and)
   (func $_runtime.gcBlock_.markFree (type 2) (param i32)
     (local i32)
-    i32.const 66088
+    i32.const 66080
     i32.load
     local.get 0
     i32.const 2
@@ -619,7 +617,7 @@
     i32.xor
     i32.and
     i32.store8)
-  (func $runtime.growHeap (type 10) (result i32)
+  (func $runtime.growHeap (type 9) (result i32)
     (local i32 i32 i32)
     memory.size
     memory.grow
@@ -629,19 +627,19 @@
     if  ;; label = @1
       memory.size
       local.set 0
-      i32.const 65960
+      i32.const 65952
       i32.load
       local.set 2
-      i32.const 65960
+      i32.const 65952
       local.get 0
       i32.const 16
       i32.shl
       i32.store
-      i32.const 66088
+      i32.const 66080
       i32.load
       local.set 0
       call $runtime.calculateHeapAddresses
-      i32.const 66088
+      i32.const 66080
       i32.load
       local.get 0
       local.get 2
@@ -710,7 +708,7 @@
             local.set 3
           end
           local.get 0
-          i32.const 66432
+          i32.const 66416
           i32.add
           local.set 6
           local.get 3
@@ -721,10 +719,10 @@
           i32.sub
           local.set 2
           local.get 5
-          i32.const 66432
+          i32.const 66416
           i32.add
           local.set 5
-          i32.const 66088
+          i32.const 66080
           i32.load
           local.set 7
           loop  ;; label = @4
@@ -764,16 +762,16 @@
               local.get 6
               i32.load
               local.tee 2
-              i32.const 66432
+              i32.const 66416
               i32.lt_u
               br_if 0 (;@5;)
               local.get 2
-              i32.const 66088
+              i32.const 66080
               i32.load
               i32.ge_u
               br_if 0 (;@5;)
               local.get 2
-              i32.const 66432
+              i32.const 66416
               i32.sub
               i32.const 4
               i32.shr_u
@@ -799,7 +797,7 @@
               i32.const 16
               i32.eq
               if  ;; label = @6
-                i32.const 66129
+                i32.const 66121
                 i32.const 1
                 i32.store8
                 i32.const 16
@@ -845,7 +843,7 @@
     unreachable)
   (func $_runtime.gcBlock_.setState (type 1) (param i32 i32)
     (local i32)
-    i32.const 66088
+    i32.const 66080
     i32.load
     local.get 0
     i32.const 2
@@ -870,21 +868,21 @@
     unreachable)
   (func $runtime.calculateHeapAddresses (type 3)
     (local i32)
-    i32.const 66088
-    i32.const 65960
+    i32.const 66080
+    i32.const 65952
     i32.load
     local.tee 0
     local.get 0
-    i32.const 66368
+    i32.const 66352
     i32.sub
     i32.const 65
     i32.div_u
     i32.sub
     local.tee 0
     i32.store
-    i32.const 66096
+    i32.const 66088
     local.get 0
-    i32.const 66432
+    i32.const 66416
     i32.sub
     i32.const 4
     i32.shr_u
@@ -917,10 +915,10 @@
     local.get 1
     i32.const 2
     i32.store offset=20
-    i32.const 66132
+    i32.const 66124
     i32.load
     local.set 3
-    i32.const 66132
+    i32.const 66124
     local.get 1
     i32.const 16
     i32.add
@@ -961,7 +959,7 @@
         local.get 1
         call $runtime.hashmapBinarySet
       end
-      i32.const 66132
+      i32.const 66124
       local.get 3
       i32.store
       local.get 1
@@ -974,13 +972,13 @@
     call $runtime.slicePanic
     unreachable)
   (func $runtime.hashmapBinarySet (type 1) (param i32 i32)
-    i32.const 65920
+    i32.const 65908
     local.get 0
     local.get 1
     local.get 0
-    i32.const 65932
+    i32.const 65920
     i32.load
-    i32.const 65924
+    i32.const 65912
     i32.load
     local.get 0
     call $runtime.hash32
@@ -1023,13 +1021,13 @@
     call $runtime._panic
     unreachable)
   (func $runtime.hashmapBinaryGet (type 5) (param i32 i32) (result i32)
-    i32.const 65920
+    i32.const 65908
     local.get 0
     local.get 1
     local.get 0
-    i32.const 65932
+    i32.const 65920
     i32.load
-    i32.const 65924
+    i32.const 65912
     i32.load
     local.get 0
     call $runtime.hash32
@@ -1052,19 +1050,19 @@
     local.get 1
     i32.const 6
     i32.store offset=4
-    i32.const 66132
+    i32.const 66124
     i32.load
     local.set 4
-    i32.const 66132
+    i32.const 66124
     local.get 1
     i32.store
     local.get 1
     local.get 4
     i32.store
     local.get 0
-    i32.const 65932
+    i32.const 65920
     i32.load
-    i32.const 65924
+    i32.const 65912
     i32.load
     i32.const 0
     call $runtime.hash32
@@ -1076,7 +1074,7 @@
     local.get 3
     select
     local.set 7
-    i32.const 65920
+    i32.const 65908
     local.get 2
     call $runtime.hashmapBucketAddrForHash
     local.set 2
@@ -1100,7 +1098,7 @@
             i32.ne
             if  ;; label = @5
               local.get 1
-              i32.const 65932
+              i32.const 65920
               i32.load
               local.tee 8
               local.get 3
@@ -1121,12 +1119,12 @@
                 i32.ne
                 br_if 0 (;@6;)
                 local.get 1
-                i32.const 65944
+                i32.const 65932
                 i32.load
                 local.tee 10
                 i32.store offset=20
                 local.get 1
-                i32.const 65948
+                i32.const 65936
                 i32.load
                 local.tee 6
                 i32.store offset=24
@@ -1148,15 +1146,15 @@
                 i32.store8
                 local.get 5
                 i32.const 0
-                i32.const 65932
+                i32.const 65920
                 i32.load
                 memory.fill
-                i32.const 65936
+                i32.const 65924
                 i32.load
                 local.tee 0
                 local.get 3
                 i32.mul
-                i32.const 65932
+                i32.const 65920
                 i32.load
                 i32.const 3
                 i32.shl
@@ -1168,8 +1166,8 @@
                 i32.const 0
                 local.get 0
                 memory.fill
-                i32.const 65928
-                i32.const 65928
+                i32.const 65916
+                i32.const 65916
                 i32.load
                 i32.const 1
                 i32.sub
@@ -1192,7 +1190,7 @@
       call $runtime.nilPanic
       unreachable
     end
-    i32.const 66132
+    i32.const 66124
     local.get 4
     i32.store
     local.get 1
@@ -1218,17 +1216,17 @@
     i32.sub
     local.tee 2
     global.set $__stack_pointer
-    i32.const 66132
+    i32.const 66124
     i32.load
     local.set 3
-    i32.const 66132
+    i32.const 66124
     local.get 2
     i32.store
     local.get 0
     local.get 1
     i32.mul
     call $malloc
-    i32.const 66132
+    i32.const 66124
     local.get 3
     i32.store
     local.get 2
@@ -1245,10 +1243,10 @@
     local.get 2
     i32.const 2
     i32.store offset=20
-    i32.const 66132
+    i32.const 66124
     i32.load
     local.set 4
-    i32.const 66132
+    i32.const 66124
     local.get 2
     i32.const 16
     i32.add
@@ -1328,7 +1326,7 @@
           local.get 2
           call $runtime.hashmapBinarySet
         end
-        i32.const 66132
+        i32.const 66124
         local.get 4
         i32.store
         local.get 2
@@ -1346,14 +1344,14 @@
     unreachable)
   (func $_start (type 3)
     (local i32 i32)
-    i32.const 65960
+    i32.const 65952
     memory.size
     i32.const 16
     i32.shl
     local.tee 0
     i32.store
     call $runtime.calculateHeapAddresses
-    i32.const 66088
+    i32.const 66080
     i32.load
     local.tee 1
     i32.const 0
@@ -1361,12 +1359,12 @@
     local.get 1
     i32.sub
     memory.fill
-    i32.const 65960
+    i32.const 65952
     memory.size
     i32.const 16
     i32.shl
     i32.store
-    i32.const 66420
+    i32.const 66412
     i32.const 1
     i32.store8)
   (func $runtime.hashmapGet (type 0) (param i32 i32 i32 i32) (result i32)
@@ -1392,10 +1390,10 @@
     local.get 4
     i32.const 7
     i32.store offset=12
-    i32.const 66132
+    i32.const 66124
     i32.load
     local.set 6
-    i32.const 66132
+    i32.const 66124
     local.get 4
     i32.const 8
     i32.add
@@ -1520,7 +1518,7 @@
         i32.load offset=16
         memory.fill
       end
-      i32.const 66132
+      i32.const 66124
       local.get 6
       i32.store
       local.get 4
@@ -1562,7 +1560,7 @@
     i32.and
     i32.mul
     i32.add)
-  (func $runtime.hashmapSet (type 7) (param i32 i32 i32 i32)
+  (func $runtime.hashmapSet (type 8) (param i32 i32 i32 i32)
     (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
     global.get $__stack_pointer
     i32.const 272
@@ -1579,11 +1577,11 @@
     i32.const 220
     memory.fill
     local.get 4
-    i32.const 66132
+    i32.const 66124
     i32.load
     local.tee 15
     i32.store offset=40
-    i32.const 66132
+    i32.const 66124
     local.get 4
     i32.const 40
     i32.add
@@ -1654,8 +1652,8 @@
           local.get 0
           i32.load offset=12
           i32.store offset=12
-          i32.const 65908
-          i32.const 65908
+          i32.const 65896
+          i32.const 65896
           i32.load
           local.tee 3
           i32.const 7
@@ -2283,7 +2281,7 @@
       call $runtime.nilPanic
       unreachable
     end
-    i32.const 66132
+    i32.const 66124
     local.get 15
     i32.store
     local.get 4
@@ -2297,7 +2295,7 @@
     local.get 0
     i32.const 1
     i32.store8)
-  (func $handle_request (type 11) (result i64)
+  (func $handle_request (type 10) (result i64)
     (local i32 i32 i32 i64 i64)
     global.get $__stack_pointer
     i32.const 32
@@ -2307,10 +2305,10 @@
     local.get 0
     i64.const 2
     i64.store offset=20 align=4
-    i32.const 66132
+    i32.const 66124
     i32.load
     local.set 1
-    i32.const 66132
+    i32.const 66124
     local.get 0
     i32.const 16
     i32.add
@@ -2321,7 +2319,7 @@
     local.get 0
     i32.const 1
     i32.const 2
-    i32.const 66420
+    i32.const 66412
     i32.load8_u
     select
     local.tee 2
@@ -2331,14 +2329,14 @@
       local.get 0
       i32.const 8
       i32.add
-      i32.const 65816
+      i32.const 65804
       i32.const 0
-      i32.const 65852
+      i32.const 65840
       i32.const 0
       i32.const 0
       local.get 2
       call_indirect (type 6)
-      i32.const 66132
+      i32.const 66124
       local.get 1
       i32.store
       local.get 0
@@ -2365,42 +2363,48 @@
     local.tee 1
     global.set $__stack_pointer
     local.get 1
-    i32.const 16
-    i32.add
-    i64.const 0
-    i64.store
+    i32.const 0
+    i32.store offset=28
     local.get 1
-    i32.const 24
-    i32.add
-    i64.const 0
-    i64.store
-    local.get 1
-    i64.const 0
-    i64.store offset=8
-    local.get 1
-    i32.const 6
-    i32.store offset=4
-    i32.const 66132
+    i64.const 2
+    i64.store offset=20 align=4
+    i32.const 66124
     i32.load
     local.set 4
-    i32.const 66132
+    i32.const 66124
     local.get 1
+    i32.const 16
+    i32.add
     i32.store
     local.get 1
     local.get 4
-    i32.store
-    i32.const 65811
-    call $github.com/jcchavezs/http-wasm-tracing/guest/tinygo/handler.stringToPtr
-    i32.const 5
+    i32.store offset=16
+    local.get 1
+    i32.const 8
+    i32.add
     i32.const 65784
+    i32.const 11
     call $github.com/jcchavezs/http-wasm-tracing/guest/tinygo/handler.stringToPtr
-    i32.const 5
+    local.get 1
+    i32.load offset=12
+    local.set 2
+    local.get 1
+    i32.load offset=8
+    local.get 1
+    i32.const 65795
+    i32.const 1
+    call $github.com/jcchavezs/http-wasm-tracing/guest/tinygo/handler.stringToPtr
+    local.get 2
+    local.get 1
+    i32.load
+    local.get 1
+    i32.load offset=4
     call $set_span_attribute
     local.get 3
-    i32.const 65900
+    i32.const 65888
     i32.eq
     local.get 3
-    i32.const 65852
+    i32.const 65840
     i32.eq
     i32.or
     i32.eqz
@@ -2409,41 +2413,7 @@
       unreachable
     end
     i32.const 1
-    i32.const 65789
-    i32.const 12
-    i32.const 65801
-    i32.const 10
-    call $github.com/http-wasm/http-wasm-guest-tinygo/handler/internal/imports.setHeaderValue
-    i32.const 8
-    call $runtime.alloc
-    local.tee 2
-    i32.const 12
-    i32.store offset=4
-    local.get 2
-    i32.const 65789
-    i32.store
-    local.get 1
-    local.get 2
-    i32.store offset=8
-    local.get 1
-    local.get 2
-    i32.store offset=12
-    i32.const 8
-    call $runtime.alloc
-    local.tee 2
-    i32.const 10
-    i32.store offset=4
-    local.get 2
-    i32.const 65801
-    i32.store
-    local.get 1
-    local.get 2
-    i32.store offset=16
-    local.get 1
-    local.get 2
-    i32.store offset=20
-    i32.const 1
-    i32.const 65811
+    i32.const 65796
     i32.const 5
     call $github.com/http-wasm/http-wasm-guest-tinygo/handler/internal/imports.writeBody
     i32.const 8
@@ -2452,7 +2422,7 @@
     i32.const 5
     i32.store offset=4
     local.get 2
-    i32.const 65811
+    i32.const 65796
     i32.store
     local.get 1
     local.get 2
@@ -2460,7 +2430,7 @@
     local.get 1
     local.get 2
     i32.store offset=28
-    i32.const 66132
+    i32.const 66124
     local.get 4
     i32.store
     local.get 0
@@ -2474,60 +2444,57 @@
     i32.add
     global.set $__stack_pointer)
   (func $handle_response (type 1) (param i32 i32))
-  (func $github.com/jcchavezs/http-wasm-tracing/guest/tinygo/handler.stringToPtr (type 4) (param i32) (result i32)
+  (func $github.com/jcchavezs/http-wasm-tracing/guest/tinygo/handler.stringToPtr (type 7) (param i32 i32 i32)
     (local i32 i32 i32)
     global.get $__stack_pointer
     i32.const 32
     i32.sub
-    local.tee 1
+    local.tee 3
     global.set $__stack_pointer
-    local.get 1
+    local.get 3
     i32.const 16
     i32.add
     i64.const 0
     i64.store
-    local.get 1
+    local.get 3
     i32.const 24
     i32.add
     i32.const 0
     i32.store
-    local.get 1
+    local.get 3
     i64.const 0
     i64.store offset=8
-    local.get 1
+    local.get 3
     i32.const 5
     i32.store offset=4
-    i32.const 66132
+    i32.const 66124
     i32.load
-    local.set 2
-    i32.const 66132
-    local.get 1
-    i32.store
-    local.get 1
-    local.get 2
-    i32.store
-    i32.const 5
-    call $runtime.alloc
-    local.tee 3
-    i32.const 4
-    i32.add
-    local.get 0
-    i32.const 4
-    i32.add
-    i32.load8_u
-    i32.store8
+    local.set 4
+    i32.const 66124
     local.get 3
-    local.get 0
-    i32.load align=1
-    i32.store align=1
-    i32.const 66132
-    local.get 2
     i32.store
+    local.get 3
+    local.get 4
+    i32.store
+    local.get 2
+    call $runtime.alloc
+    local.tee 5
     local.get 1
+    local.get 2
+    memory.copy
+    i32.const 66124
+    local.get 4
+    i32.store
+    local.get 0
+    local.get 2
+    i32.store offset=4
+    local.get 0
+    local.get 5
+    i32.store
+    local.get 3
     i32.const 32
     i32.add
-    global.set $__stack_pointer
-    local.get 3)
+    global.set $__stack_pointer)
   (table (;0;) 5 5 funcref)
   (memory (;0;) 2)
   (global $__stack_pointer (mut i32) (i32.const 65536))
@@ -2541,5 +2508,5 @@
   (export "handle_response" (func $handle_response))
   (elem (;0;) (i32.const 1) func $main.handleRequest $github.com/http-wasm/http-wasm-guest-tinygo/handler.init$1 $runtime.memequal $runtime.hash32)
   (data $.rodata (i32.const 65536) "free: invalid pointer\00\00\00\00\00\01\00\15\00\00\00realloc: invalid pointer \00\01\00\18\00\00\00out of memorypanic: panic: runtime error: nil pointer dereferenceindex out of rangeslice out of rangegithub.com/http-wasm/http-wasm-guest-tinygo/handler\00\00\00\00\da\00\00\00\f0\00\01\00\d8\00\01")
-  (data $.rodata.1 (i32.const 65776) "\d5\00\00\00\dc\00\01\00worldContent-Typetext/plainhello\fa\00\08\00d\01\01\00\dc\00\01\00\a5\00\01\00handler.wasmRequest\00\fa\00\05\00l\01\01\00\dc\00\01\00\a5\00\01\00handler.wasmResponse\00\00\00\00\d5\00\08\00\18\01\01\00\d5\00\05\00<\01\01")
-  (data $.data (i32.const 65908) "/\a0Qp\b0\01\01\00\00\00\00\00\5c\02\01\00\c1\82\01\00\00\00\00\00\04\00\00\00\0c\00\00\00\01\00\00\00\00\00\00\00\03\00\00\00\00\00\00\00\04"))
+  (data $.rodata.1 (i32.const 65776) "\d5\00\00\00\dc\00\01\00greeting_id1hello\00\00\00\fa\00\08\00X\01\01\00\dc\00\01\00\a5\00\01\00handler.wasmRequest\00\fa\00\05\00`\01\01\00\dc\00\01\00\a5\00\01\00handler.wasmResponse\00\00\00\00\d5\00\08\00\0c\01\01\00\d5\00\05\000\01\01")
+  (data $.data (i32.const 65896) "/\a0Qp\a8\01\01\00\00\00\00\00T\02\01\00\c1\82\01\00\00\00\00\00\04\00\00\00\0c\00\00\00\01\00\00\00\00\00\00\00\03\00\00\00\00\00\00\00\04"))
