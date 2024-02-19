@@ -6,7 +6,7 @@ package main
 import (
 	"github.com/http-wasm/http-wasm-guest-tinygo/handler"
 	"github.com/http-wasm/http-wasm-guest-tinygo/handler/api"
-	tracinghandler "github.com/jcchavezs/http-wasm-tracing/guest/tinygo/handler"
+	tracinghandler "github.com/jcchavezs/wasm-tracing/guest/tinygo/handler"
 )
 
 func main() {

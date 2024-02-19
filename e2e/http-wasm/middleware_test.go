@@ -1,3 +1,5 @@
+//go:build e2e
+
 package e2e
 
 import (
@@ -9,9 +11,10 @@ import (
 
 	"github.com/http-wasm/http-wasm-host-go/handler"
 	wasm "github.com/http-wasm/http-wasm-host-go/handler/nethttp"
-	tracing "github.com/jcchavezs/http-wasm-tracing"
-	"github.com/jcchavezs/http-wasm-tracing/trace"
+	tracing "github.com/jcchavezs/wasm-tracing"
+	"github.com/jcchavezs/wasm-tracing/trace"
 	"github.com/stretchr/testify/require"
+	"github.com/tetratelabs/wazero"
 )
 
 //go:embed testdata/hello.wasm
@@ -21,7 +24,7 @@ type Span struct {
 	attrKey, attrValue string
 }
 
-func (s *Span) SetAttribute(key, value string) {
+func (s *Span) SetStringAttribute(key, value string) {
 	s.attrKey = key
 	s.attrValue = value
 }
@@ -43,10 +46,19 @@ func MakeExtract(t *testing.T) trace.Extractor {
 
 func TestE2E(t *testing.T) {
 	tracing.SetExtractor(MakeExtract(t))
+
+	r, err := handler.DefaultRuntime(context.Background())
+	require.NoError(t, err)
+
+	err = tracing.LoadModuleIntoRuntime(context.Background(), r)
+	require.NoError(t, err)
+
 	mw, err := wasm.NewMiddleware(
 		context.Background(),
 		[]byte(helloGuest),
-		handler.Runtime(tracing.WrapNewRuntime(handler.DefaultRuntime)),
+		handler.Runtime(func(ctx context.Context) (wazero.Runtime, error) {
+			return r, nil
+		}),
 	)
 	require.NoError(t, err)
 

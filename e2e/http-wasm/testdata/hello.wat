@@ -12,7 +12,7 @@
   (type (;10;) (func (result i64)))
   (import "http_handler" "write_body" (func $github.com/http-wasm/http-wasm-guest-tinygo/handler/internal/imports.writeBody (type 7)))
   (import "wasi_snapshot_preview1" "fd_write" (func $runtime.fd_write (type 0)))
-  (import "http_handler" "set_span_string_attribute" (func $set_span_string_attribute (type 8)))
+  (import "wasm_tracing" "set_span_string_attribute" (func $set_span_string_attribute (type 8)))
   (func $runtime.memequal (type 0) (param i32 i32 i32 i32) (result i32)
     (local i32 i32)
     i32.const 0
@@ -2384,7 +2384,7 @@
     i32.add
     i32.const 65784
     i32.const 11
-    call $github.com/jcchavezs/http-wasm-tracing/guest/tinygo/handler.stringToPtr
+    call $github.com/jcchavezs/wasm-tracing/guest/tinygo/handler.stringToPtr
     local.get 1
     i32.load offset=12
     local.set 2
@@ -2393,7 +2393,7 @@
     local.get 1
     i32.const 65795
     i32.const 1
-    call $github.com/jcchavezs/http-wasm-tracing/guest/tinygo/handler.stringToPtr
+    call $github.com/jcchavezs/wasm-tracing/guest/tinygo/handler.stringToPtr
     local.get 2
     local.get 1
     i32.load
@@ -2444,7 +2444,7 @@
     i32.add
     global.set $__stack_pointer)
   (func $handle_response (type 1) (param i32 i32))
-  (func $github.com/jcchavezs/http-wasm-tracing/guest/tinygo/handler.stringToPtr (type 7) (param i32 i32 i32)
+  (func $github.com/jcchavezs/wasm-tracing/guest/tinygo/handler.stringToPtr (type 7) (param i32 i32 i32)
     (local i32 i32 i32)
     global.get $__stack_pointer
     i32.const 32

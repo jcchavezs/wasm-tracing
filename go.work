@@ -1,0 +1,7 @@
+go 1.21.7
+
+use (
+	.
+	./e2e/http-wasm
+	./e2e/http-wasm/testdata/hello
+)

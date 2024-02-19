@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/jcchavezs/http-wasm-tracing/guest/tinygo/handler/internal/imports"
+	"github.com/jcchavezs/wasm-tracing/guest/tinygo/handler/internal/imports"
 )
 
 // SetSpanStringAttribute sets an string attribute on the current span.

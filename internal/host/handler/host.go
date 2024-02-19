@@ -3,8 +3,8 @@ package handler
 import (
 	"context"
 
-	apihandler "github.com/jcchavezs/http-wasm-tracing/internal/host/api/handler"
-	"github.com/jcchavezs/http-wasm-tracing/trace"
+	apihandler "github.com/jcchavezs/wasm-tracing/internal/host/api/handler"
+	"github.com/jcchavezs/wasm-tracing/trace"
 )
 
 var Extractor = func(ctx context.Context) (trace.Span, bool) {
@@ -17,6 +17,6 @@ var _ apihandler.Host = host{}
 
 func (host) SetSpanStringAttribute(ctx context.Context, key, value string) {
 	if s, ok := Extractor(ctx); ok {
-		s.SetAttribute(key, value)
+		s.SetStringAttribute(key, value)
 	}
 }

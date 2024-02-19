@@ -4,15 +4,29 @@ import (
 	"context"
 	"fmt"
 
-	apihandler "github.com/jcchavezs/http-wasm-tracing/internal/host/api/handler"
+	apihandler "github.com/jcchavezs/wasm-tracing/internal/host/api/handler"
+	"github.com/tetratelabs/wazero"
 	wazeroapi "github.com/tetratelabs/wazero/api"
 )
 
-type middleware struct {
+type module struct {
 	host apihandler.Host
 }
 
-func (m *middleware) setSpanStringAttribute(ctx context.Context, mod wazeroapi.Module, params []uint64) {
+const i32 = wazeroapi.ValueTypeI32
+
+func Module(r wazero.Runtime) (wazero.CompiledModule, error) {
+	m := &module{host: host{}}
+
+	return r.NewHostModuleBuilder(apihandler.ModuleName).
+		NewFunctionBuilder().
+		WithGoModuleFunction(wazeroapi.GoModuleFunc(m.setSpanStringAttribute), []wazeroapi.ValueType{i32, i32, i32, i32}, []wazeroapi.ValueType{}).
+		WithParameterNames("key", "key_len", "value", "value_len").
+		Export(apihandler.FuncSetSpanStringAttribute).
+		Compile(context.Background())
+}
+
+func (m *module) setSpanStringAttribute(ctx context.Context, mod wazeroapi.Module, params []uint64) {
 	key := uint32(params[0])
 	keyLen := uint32(params[1])
 	value := uint32(params[2])
